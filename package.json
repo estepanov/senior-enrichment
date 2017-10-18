@@ -8,7 +8,8 @@
     "build": "webpack",
     "build-watch": "webpack -w",
     "start": "nodemon server/start.js",
-    "seed": "node db/seed.js "
+    "seed": "node db/seed.js ",
+    "postinstall": "[ -h ./node_modules/APP ] || ln -sf ../ ./node_modules/APP"
   },
   "keywords": [
     "react",

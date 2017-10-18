@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const db = require('./db')
+const db = require('./_db')
 const { Campus, Students } = require('./models')
 
 db.sync({force: true})

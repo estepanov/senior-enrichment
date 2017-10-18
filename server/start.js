@@ -37,7 +37,7 @@ if (module === require.main) {
 
   const PORT = 1337
 
-  const db = require('../db')
+  const db = require('APP/db')
 
   db.sync()
   .then(() => {

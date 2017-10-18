@@ -1,5 +1,7 @@
 # Ignore all node_modules
 node_modules/*
+# but dont ignore the SYMLINK in node_modules
+!node_modules/APP
 
 # Compiled JS
 public/bundle.js

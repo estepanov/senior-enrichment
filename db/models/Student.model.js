@@ -1,5 +1,5 @@
 const Sequelize = require('sequelize')
-const db = require('../db')
+const db = require('APP/db/_db')
 
 const Students = db.define('Student', {
     name: {
