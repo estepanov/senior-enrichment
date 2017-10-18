@@ -1,3 +1,4 @@
+'use strict'
 const Sequelize = require('sequelize')
 const db = require('APP/db/_db')
 
@@ -6,7 +7,6 @@ const Students = db.define('Student', {
         type: Sequelize.STRING,
         allowNull: false,
         validate: {
-            isAlpha: true,
             notEmpty: true
         }
     },
@@ -27,7 +27,7 @@ const Students = db.define('Student', {
     },
     image: {
         type: Sequelize.STRING,
-        allowNull: false,
+        defaultValue: '/imgs/student_default.jpg',
         validate: {
             notEmpty: true
         }

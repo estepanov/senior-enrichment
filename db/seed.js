@@ -1,3 +1,4 @@
+'use strict'
 const chalk = require('chalk')
 const db = require('./_db')
 const { Campus, Students } = require('./models')

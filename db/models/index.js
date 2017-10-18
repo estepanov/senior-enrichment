@@ -1,4 +1,4 @@
-'use strict';
+'use strict'
 
 // Require all the models
 	// Running each model (i.e. table) module (i.e. file) registers each model into our sequelize db so any other part of the application could call db.model('user') OR db.models.user to get access to the `user` model.
@@ -13,5 +13,9 @@ Campus.hasMany(Students,{
 	onDelete: 'cascade',
 	hooks: true
 })
+
+// Students.belongsTo(Campus,{
+// 	as: 'campusId'
+// })
 
 module.exports = { Students, Campus }
