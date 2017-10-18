@@ -1,0 +1,19 @@
+.badge {
+    margin: 3px;
+    width: 10px;
+    height: 10px;
+    background-color: #000;
+    color: #fff;
+    display: inline-block;
+    font-size: .7em;
+    padding: 5px;
+    text-align: center;
+    vertical-align: center;
+    border-radius: 50%;
+}
+a.nounderline:link {  
+    text-decoration: none;  
+}
+fieldset {
+    border: none;
+}

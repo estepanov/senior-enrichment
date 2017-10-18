@@ -11,8 +11,8 @@ const Header = props => {
         <nav>
             <h3>Master Chief University </h3>
             <NavLink to="/">Home</NavLink> {spacer}
-            <NavLink to="/campuses">Campuses <span className="badge">{ campusCount }</span></NavLink> {spacer}
-            <NavLink to="/students">Students <span className="badge">{ studentCount }</span></NavLink> 
+            <NavLink to="/campuses">Campuses<span className="badge nounderline">{ campusCount }</span></NavLink> {spacer}
+            <NavLink to="/students">Students<span className="badge nounderline">{ studentCount }</span></NavLink> 
         </nav>
         <hr />
     </section>
@@ -20,4 +20,4 @@ const Header = props => {
 }
 
 
-export default withRouter(Header)
+export default Header

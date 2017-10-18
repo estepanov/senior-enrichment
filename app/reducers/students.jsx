@@ -13,6 +13,8 @@ const initialState = {
 const LOAD_STUDENTS = 'LOAD_STUDENTS'
 // load a single student (planning for socket)
 const LOAD_STUDENT = 'LOAD_STUDENT'
+// obj to SUBMIT new student
+const NEW_STUDENT = 'NEW_STUDENT'
 
 // ACTION CREATORS
 // load multiple students
@@ -21,8 +23,8 @@ export function loadStudents (students) {
   return action
 }
 // load a single student (planning for socket)
-export function loadStudent (student) {
-    const action = { type: LOAD_STUDENT, student }
+export function loadStudent (newStudent) {
+    const action = { type: LOAD_STUDENT, newStudent }
     return action
   }
 
@@ -32,9 +34,21 @@ export const fetchStudents = () => {
         return axios.get('/api/students/')
             .then(res => res.data)
             .then(students => {
-                const action = loadStudents(students);
+                const action = loadStudents(students)
                 dispatch(action)
             })
+            .catch(console.error)
+    }
+}
+export const postStudent = (newStudent) => {
+    return (dispatch) => {
+        return axios.post('/api/students/', newStudent)
+            .then(res => res.data)
+            .then(newStudentRetObj => {
+                const action = loadStudent(newStudentRetObj)
+                dispatch(action)
+            })
+            .catch(console.error)
     }
 }
 
@@ -49,10 +63,10 @@ export default function reducer (state = initialState, action) {
         case LOAD_STUDENT:
             return {
                 ...state,
-                studentsList: [...state.students, action.student]
+                studentsList: [...state.studentsList, action.newStudent]
             }
 
         default:
-        return state
+            return state
     }
 }

@@ -11,6 +11,7 @@ import Footer from './Footer.jsx'
 import Welcome from './Welcome.jsx'
 import CampusList from './CampusList.jsx'
 import StudentList from './StudentList.jsx'
+import SingleCampus from './SingleCampus.jsx'
 
 class Root extends Component {
   componentDidMount() {
@@ -19,13 +20,16 @@ class Root extends Component {
   }
 
   render() { 
-    console.log("PROPS:::::::",this.props)
+    if(this.props.campuses && this.props.students) {
+      
+    }
     return (
       <div>
         <Header campuses={this.props.campuses} students={this.props.students}/>
         <Switch>  
           <Route exact path="/" component={Welcome} />
           <Route exact path="/campuses" component={() => (<CampusList campuses={this.props.campuses} students={this.props.students}/>)} />
+          <Route path="/campus/:campusId" component={SingleCampus} />
           <Route exact path="/students" component={() => (<StudentList students={this.props.students} campuses={this.props.campuses}/>)} />
         </Switch>
         <Footer />
