@@ -29,6 +29,7 @@
     "redux": "^3.6.0",
     "redux-logger": "^2.7.0",
     "redux-thunk": "^2.1.0",
+    "resolve-url-loader": "^2.1.1",
     "sequelize": "^4.7.4"
   },
   "devDependencies": {
