@@ -1,6 +1,7 @@
 'use strict'
 
 const express = require('express')
+const chalk = require('chalk')
 const bodyParser = require('body-parser')
 const {resolve} = require('path')
 
@@ -37,9 +38,15 @@ if (module === require.main) {
   const PORT = 1337
 
   const db = require('../db')
+
   db.sync()
   .then(() => {
-    console.log('db synced')
-    app.listen(PORT, () => console.log(`server listening on port ${PORT}`))
+    console.log(chalk.yellow('---> db synced'))
+    app.listen(PORT, () => {
+      const space = '\t\t\t'
+      console.log(chalk.bgGreen.black.bold(
+        `${space} 👽  🥊  fighting aliens on port ${PORT} 🍻  😎${space}`
+      ))
+    })
   });
 }
