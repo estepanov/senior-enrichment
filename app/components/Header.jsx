@@ -1,20 +1,23 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { withRouter, NavLink } from 'react-router-dom'
 
-function Header () {
-
+const Header = props => {
+  const spacer = ' | '
+  const campusCount = props.campuses.length
+  const studentCount = props.students.length
   return (
     <section>
         <nav>
             <h3>Master Chief University </h3>
+            <NavLink to="/">Home</NavLink> {spacer}
+            <NavLink to="/campuses">Campuses <span className="badge">{ campusCount }</span></NavLink> {spacer}
+            <NavLink to="/students">Students <span className="badge">{ studentCount }</span></NavLink> 
         </nav>
         <hr />
     </section>
   )
 }
 
-const mapStateToProps = function (state) {
-  return state
-}
 
-export default connect(mapStateToProps)(Header)
+export default withRouter(Header)
