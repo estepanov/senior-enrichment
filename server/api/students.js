@@ -30,6 +30,7 @@ router.get('/', (req, res, next) => {
 
 // creates a new student and returns the new student obj
 router.post('/', (req, res, next) => {
+    console.log("Incoming req to post a new student:\n",req.body)
     Students.create(req.body)
         .then((newStudent) => {
             res.json(newStudent)

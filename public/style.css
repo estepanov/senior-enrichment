@@ -1,3 +1,6 @@
+body {
+    font-family: 'Questrial', sans-serif;
+}
 .badge {
     margin: 3px;
     width: 10px;
@@ -16,4 +19,55 @@ a.nounderline:link {
 }
 fieldset {
     border: none;
+}
+
+h1,h2,h3,h4,h5,h6 {
+    font-family: 'Anton', sans-serif;
+    font-weight: 100;
+}
+
+.headerBar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3em;
+    background-color:rgba(0, 0, 0, 0.7);
+    justify-content: space-between;
+    display: flex;  
+    align-items: center;
+}
+
+.title {
+    margin: 0;
+    margin-left: 1em;
+    color: white;
+    font-size: 2em;
+    font-weight: 800;
+}
+
+
+.container {
+    display: flex; /* or inline-flex */
+}
+
+.NavLinks {
+    justify-content: flex-end;
+    margin-right: 1em;
+    
+}
+
+.NavLinks a {
+    color: white;
+    padding-right: 20px;
+    text-decoration: none;
+    font-size: 1.1em;
+}
+.NavLinks a:hover {
+    /* text-decoration: underline; */
+    color: darkgrey
+}
+
+.Main {
+    margin-top: 3em;
 }

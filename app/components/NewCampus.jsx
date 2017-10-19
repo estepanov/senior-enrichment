@@ -1,10 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import store from 'APP/app/store.jsx'
+import { withRouter } from 'react-router-dom'
 import { postCampus } from 'APP/app/reducers/campuses.jsx'
 
 class NewCampus extends React.Component {
     constructor(props) {
+        console.log("INSIDE NEW CAMPUS")
         super(props)
         this.initState = {
             name: '',
@@ -69,4 +71,4 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
     goPostCampus: (newCampus) => {dispatch(postCampus(newCampus))}
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(NewCampus)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(NewCampus))

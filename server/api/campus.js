@@ -46,7 +46,6 @@ router.get('/students', (req, res, next) => {
 router.post('/', (req, res, next) => {
     Campus.create(req.body)
         .then((newCampus) => {
-            console.log("new campus created::::",newCampus)
             res.json(newCampus)
         }) 
         .catch(next)

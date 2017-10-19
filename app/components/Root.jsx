@@ -12,6 +12,8 @@ import Welcome from './Welcome.jsx'
 import CampusList from './CampusList.jsx'
 import StudentList from './StudentList.jsx'
 import SingleCampus from './SingleCampus.jsx'
+import SingleStudent from './SingleStudent.jsx'
+import EditCampus from './EditCampus.jsx'
 
 class Root extends Component {
   componentDidMount() {
@@ -24,13 +26,14 @@ class Root extends Component {
       
     }
     return (
-      <div>
+      <div className="Main">
         <Header campuses={this.props.campuses} students={this.props.students}/>
         <Switch>  
           <Route exact path="/" component={Welcome} />
-          <Route exact path="/campuses" component={() => (<CampusList campuses={this.props.campuses} students={this.props.students}/>)} />
+          <Route exact path="/campus" component={CampusList} />
           <Route path="/campus/:campusId" component={SingleCampus} />
-          <Route exact path="/students" component={() => (<StudentList students={this.props.students} campuses={this.props.campuses}/>)} />
+          <Route exact path="/student" component={StudentList} />
+          <Route path="/student/:studentId" component={({ match }) => (<SingleStudent studentId={match.params.studentId} students={this.props.students} />)} />
         </Switch>
         <Footer />
       </div>

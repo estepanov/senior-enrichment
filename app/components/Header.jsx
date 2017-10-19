@@ -3,18 +3,18 @@ import { connect } from 'react-redux'
 import { withRouter, NavLink } from 'react-router-dom'
 
 const Header = props => {
-  const spacer = ' | '
   const campusCount = props.campuses.length
   const studentCount = props.students.length
   return (
-    <section>
-        <nav>
-            <h3>Master Chief University </h3>
-            <NavLink to="/">Home</NavLink> {spacer}
-            <NavLink to="/campuses">Campuses<span className="badge nounderline">{ campusCount }</span></NavLink> {spacer}
-            <NavLink to="/students">Students<span className="badge nounderline">{ studentCount }</span></NavLink> 
+    <section className="container">
+        <nav className="headerBar">
+          <span className="title">Master Chief University </span>
+          <div className="NavLinks">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/campus">Campuses<span className="badge nounderline">{ campusCount }</span></NavLink>
+            <NavLink to="/student">Students<span className="badge nounderline">{ studentCount }</span></NavLink> 
+          </div>
         </nav>
-        <hr />
     </section>
   )
 }

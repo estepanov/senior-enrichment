@@ -6,12 +6,14 @@ import { postStudent } from 'APP/app/reducers/students.jsx'
 class newStudent extends React.Component {
     constructor(props) {
         super(props)
+        console.log(">>>>>>>>>PROPS IN NEWSTUDENT",this.props)
+        const defaultId = this.props.specificId ? this.props.specificId : 1
         this.initState = {
             name: '',
             image: '',
             address: '',
             email: '',
-            campusId: 1
+            CampusId: defaultId
         }
         this.state = this.initState
         this.handleChange = this.handleChange.bind(this)
@@ -19,13 +21,11 @@ class newStudent extends React.Component {
     }
 
     handleChange(event) {
-        // get the element name that has changed
         const target = event.target.name
-        // get the changed elements value
-        const value = event.target.value
-        // initiate new update object that will be used to update store
+        let value = event.target.value
+        // if the target was campusId then we need to parse it as an int
+        if(target === "CampusId") value = parseInt(value)
         let updateObj = {}
-        // set key and value of new obj to be the name and value of the changed element
         updateObj[target] = value
         this.setState(updateObj)
     }
@@ -34,17 +34,22 @@ class newStudent extends React.Component {
         event.preventDefault()
         const newStudent = this.state
         this.setState(this.initState)
-        console.log('attempting to submit new student', newStudent)
         this.props.goPostStudent(newStudent)
+        if(this.props.update) this.props.update()
     }
 
     render () {
         let campusOptions
         if(this.props.campusesList) {
-            campusOptions = this.props.campusesList.map(campus => 
-                (<option key={campus.id} value={campus.id}>{campus.name}</option>)
-            )
+            campusOptions = this.props.campusesList.map(campus => (
+                <option key={campus.id} value={campus.id}>{campus.name}</option>
+            ))
         }
+        let selectForceOne = ''
+        if(this.props.specificId) {
+            selectForceOne = `disabled value='${this.props.specificId}'`
+        }
+        console.log("!!!!!INRENDER>>>>>>>>>PROPS IN NEWSTUDENT",this.props.specificId)
         return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <fieldset>
@@ -65,7 +70,7 @@ class newStudent extends React.Component {
                 </fieldset>
                 <fieldset>
                     <label>Student Campus</label>
-                    <select>
+                    <select name="CampusId" defaultValue={this.state.CampusId} disabled={this.props.specificId? true : false}  >
                         {campusOptions}
                     </select>
                 </fieldset>
