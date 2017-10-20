@@ -11,8 +11,5 @@ function Footer () {
   )
 }
 
-const mapStateToProps = function (state) {
-  return state
-}
 
-export default connect(mapStateToProps)(Footer);
+export default Footer

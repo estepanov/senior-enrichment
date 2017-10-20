@@ -17,29 +17,23 @@ class SingleCampus extends React.Component {
             showAddStudent: false,
             showEditDetails: false
         }
-        this.updated = this.updated.bind(this)
-        this.studentAdded = this.studentAdded.bind(this)
-        this.props.goFetchCampuses()
         this.handleEditClick = this.handleEditClick.bind(this)
         this.handleAddStudentClick = this.handleAddStudentClick.bind(this)
     }
 
-    componentDidMount() {
-        // this.props.goFetchCampuses()
-    }
-
+    // toggles the visibility of edit form
     handleEditClick(e) {
         if(e) e.preventDefault()
-        console.log("hit edit click")
         this.setState({showEditDetails: !this.state.showEditDetails})
     }
 
+    // toggles the visibility of add student form
     handleAddStudentClick(e) {
         if(e) e.preventDefault()
-        console.log("hit edit click")
         this.setState({showAddStudent: !this.state.showAddStudent})
     }
 
+    // helper function that maps students to LI elements
     getMappedUsers(allStudents) {
         let mappedStudents = []
         if(allStudents) {
@@ -52,27 +46,18 @@ class SingleCampus extends React.Component {
         return mappedStudents
     }
 
-    updated() {
-        this.handleEditClick()
-        // this.forceUpdate()
-    }
-    studentAdded() {
-        this.handleAddStudentClick()
-        // this.forceUpdate()
-    }
-
     render () {
         const mappedStudents = this.getMappedUsers(this.props.students)
         const currName = this.props.currentCampus ? this.props.currentCampus.name : 'not a valid campus'
         return (
         <div>
             <h2>{currName} <button onClick={this.handleEditClick}>{ this.state.showEditDetails ? 'Hide Edit' : 'Edit Campus' }</button></h2>
-            { this.state.showEditDetails && <EditCampus update={this.updated} />}
+            { this.state.showEditDetails && <EditCampus update={this.handleEditClick} />}
             <ul>
                 { mappedStudents ? mappedStudents : 'We currently do not have any students' }
             </ul>
             <button onClick={this.handleAddStudentClick}>{ this.state.showAddStudent ? 'Hide Add Student' : 'Add Student'}</button>
-            { this.state.showAddStudent && <NewStudent update={this.studentAdded} specificId={this.props.currentCampus.id} /> }
+            { this.state.showAddStudent && <NewStudent update={this.handleAddStudentClick} specificId={this.props.currentCampus.id} /> }
         </div>
         )
     }
@@ -90,9 +75,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-
-const mapDispatchToProps = dispatch => ({
-    goFetchCampuses: () => dispatch(fetchCampuses())
-})
-
-export default withRouter(connect(mapStateToProps,mapDispatchToProps )(SingleCampus))
+export default withRouter(connect(mapStateToProps )(SingleCampus))

@@ -47,13 +47,11 @@ class EditCampus extends React.Component {
         let updateObj = {}
         updateObj[target] = value
         this.setState(updateObj)
-        console.log(this.props)
     }
 
     handleSubmit(event) {
         event.preventDefault()
         const updatedCampus = this.state
-        console.log("TRY TO SUBMIT THIS STATE::::::::::::::::::::::::::::::",updatedCampus)
         this.props.goPutCampus(updatedCampus)
         this.props.update()
     }
@@ -87,7 +85,6 @@ class EditCampus extends React.Component {
     }
 
 }
-// export default EditCampus
 
 const mapStateToProps = (state, ownProps) => {
     const currCampId = parseInt(ownProps.match.params.campusId)

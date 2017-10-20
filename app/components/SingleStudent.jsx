@@ -19,22 +19,18 @@ class SingleStudent extends React.Component {
 
     updated() {
         this.handleEditClick()
-        // this.forceUpdate()
     }
 
     updated() {
         this.handleEditClick()
-        // this.forceUpdate()
     }
 
     handleEditClick(e) {
         if(e) e.preventDefault()
-        console.log("hit edit click")
         this.setState({showEditDetails: !this.state.showEditDetails})
     }
 
     render () {
-        console.log("->>>------>>>>>",this.props)
         const currStudent = this.props.currentStudent
         if(currStudent) {
             return (
@@ -44,8 +40,6 @@ class SingleStudent extends React.Component {
                     <ul>
                        {currStudent.address}
                     </ul>
-                    <button onClick={this.handleAddStudentClick}>{ this.state.showAddStudent ? 'Hide Add Student' : 'Add Student'}</button>
-                    { this.state.showAddStudent && <NewStudent update={this.studentAdded} specificId={this.props.currentStudent.id} /> }
                 </div>
                 )
         } else {
@@ -64,35 +58,4 @@ const mapStateToProps = (state, ownProps) => {
     }
 }
 
-
-const mapDispatchToProps = dispatch => ({
-    goFetchStudents: () => dispatch(fetchStudents())
-})
-
-export default withRouter(connect(mapStateToProps,mapDispatchToProps )(SingleStudent))
-
-// const SingleStudent = props =>  {
-//     const STUDENT_ID = parseInt(props.studentId)
-//     console.log("single student props", props)
-//     // console.log("student", STUDENT_ID)
-//     let currentStudent
-//     if(props.students) {
-//         props.students.forEach(student => {
-//             if(student.id === STUDENT_ID) currentStudent = student
-//         })
-//     }
-//     return (
-//     <div>
-//         <p>this is a single student view</p>
-//         { currentStudent ? currentStudent.name : 'not a valid student' }
-//         <ul>
-//             <li> { currentStudent && currentStudent.name} </li>
-//             <li> { currentStudent && currentStudent.address} </li>
-//             <li> { currentStudent && currentStudent.image } </li>
-//             <li> { currentStudent && currentStudent.campusId } </li>
-//         </ul>
-//     </div>
-//     )
-// }
-  
-// export default SingleStudent
+export default withRouter(connect(mapStateToProps)(SingleStudent))

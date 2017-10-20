@@ -29,11 +29,11 @@ class Root extends Component {
       <div className="Main">
         <Header campuses={this.props.campuses} students={this.props.students}/>
         <Switch>  
-          <Route exact path="/" component={Welcome} />
           <Route exact path="/campus" component={CampusList} />
           <Route path="/campus/:campusId" component={SingleCampus} />
           <Route exact path="/student" component={StudentList} />
           <Route path="/student/:studentId" component={({ match }) => (<SingleStudent studentId={match.params.studentId} students={this.props.students} />)} />
+          <Route exact path="/" component={Welcome} />
         </Switch>
         <Footer />
       </div>

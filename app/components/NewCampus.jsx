@@ -18,7 +18,7 @@ class NewCampus extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
-
+    
     handleChange(event) {
         // get the element name that has changed
         const target = event.target.name

@@ -8,9 +8,8 @@ const Header = props => {
   return (
     <section className="container">
         <nav className="headerBar">
-          <span className="title">Master Chief University </span>
+          <a className="title" href="/">Master Chief University</a>
           <div className="NavLinks">
-            <NavLink to="/">Home</NavLink>
             <NavLink to="/campus">Campuses<span className="badge nounderline">{ campusCount }</span></NavLink>
             <NavLink to="/student">Students<span className="badge nounderline">{ studentCount }</span></NavLink> 
           </div>

@@ -8,12 +8,14 @@ import { putStudent } from 'APP/app/reducers/students'
 class EditStudent extends React.Component {
     constructor (props) {
         super(props)
+        const defaultId = this.props.currentStudent.id ? this.props.currentStudent.id : 1
         this.initState = {
             id: 0,
             name: '',
             image: '',
             address: '',
-            email: ''
+            email: '',
+            CampusId: defaultId
         }
         this.state = this.initState
         this.handleChange = this.handleChange.bind(this)
@@ -26,7 +28,8 @@ class EditStudent extends React.Component {
                 name: this.props.currentStudent.name,
                 image: this.props.currentStudent.image,
                 address: this.props.currentStudent.address,
-                email: this.props.currentStudent.email })
+                email: this.props.currentStudent.email,
+                CampusId: this.props.currentStudent.CampusId })
         }
     }
 
@@ -37,28 +40,35 @@ class EditStudent extends React.Component {
                 name: nextProps.currentStudent.name,
                 image: nextProps.currentStudent.image,
                 address: nextProps.currentStudent.address,
-                email: nextProps.currentStudent.email })
+                email: nextProps.currentStudent.email,
+                CampusId: this.props.currentStudent.CampusId })
         }
     }
 
+    // single function that fires for any form changes
     handleChange(event) {
         const target = event.target.name
-        const value = event.target.value
+        let value = event.target.value
+        if(target === "CampusId") value = parseInt(value)
         let updateObj = {}
         updateObj[target] = value
         this.setState(updateObj)
-        console.log(this.props)
     }
-
+    // submit handler 
     handleSubmit(event) {
         event.preventDefault()
         const updatedStudent = this.state
-        console.log("TRY TO SUBMIT THIS STATE::::::::::::::::::::::::::::::",updatedStudent)
         this.props.goPutStudent(updatedStudent)
         this.props.update()
     }
 
     render(){
+        let campusOptions
+        if(this.props.campuses) {
+            campusOptions = this.props.campuses.map(campus => (
+                <option key={campus.id} value={campus.id}>{campus.name}</option>
+            ))
+        }
         if(this.props.currentStudent) {
             return (
                 <form onSubmit={this.handleSubmit}>
@@ -78,6 +88,12 @@ class EditStudent extends React.Component {
                     <label>Student Manager Email</label>
                     <input value={this.state.email} onChange={this.handleChange} type="text" name="email"/>
                 </fieldset>
+                <fieldset>
+                <label>Student Campus</label>
+                    <select name="CampusId" value={this.state.CampusId} onChange={this.handleChange} >
+                        {campusOptions}
+                    </select>
+                </fieldset>
                 <button type="submit">Save Student Edit</button>
             </form>
             )
@@ -90,7 +106,6 @@ class EditStudent extends React.Component {
 // export default EditStudent
 
 const mapStateToProps = (state, ownProps) => {
-    // let currStudID
     let currStudID
     if(ownProps.match.params.studentId) {
         currStudID = parseInt(ownProps.match.params.studentId)

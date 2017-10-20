@@ -6,7 +6,6 @@ import { postStudent } from 'APP/app/reducers/students.jsx'
 class newStudent extends React.Component {
     constructor(props) {
         super(props)
-        console.log(">>>>>>>>>PROPS IN NEWSTUDENT",this.props)
         const defaultId = this.props.specificId ? this.props.specificId : 1
         this.initState = {
             name: '',
@@ -45,11 +44,6 @@ class newStudent extends React.Component {
                 <option key={campus.id} value={campus.id}>{campus.name}</option>
             ))
         }
-        let selectForceOne = ''
-        if(this.props.specificId) {
-            selectForceOne = `disabled value='${this.props.specificId}'`
-        }
-        console.log("!!!!!INRENDER>>>>>>>>>PROPS IN NEWSTUDENT",this.props.specificId)
         return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
                 <fieldset>
