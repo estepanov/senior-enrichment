@@ -30,7 +30,6 @@ router.get('/', (req, res, next) => {
 
 // creates a new student and returns the new student obj
 router.post('/', (req, res, next) => {
-    console.log("Incoming req to post a new student:\n",req.body)
     Students.create(req.body)
         .then((newStudent) => {
             res.json(newStudent)
@@ -41,9 +40,7 @@ router.post('/', (req, res, next) => {
 // updates a student. does not return updated student.
 router.put('/:id', (req, res, next) => {
     req.student.update(req.body)
-        .then((updatedStudent) => {
-            // updatedStudent is the updated student
-            // ignored here, but is available for use.
+        .then(() => {
             res.sendStatus(200)
         })
         .catch(next)

@@ -21,6 +21,7 @@ class EditStudent extends React.Component {
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
     }
+    
     componentDidMount() {
         if(this.props.currentStudent) {
             this.setState({
@@ -103,7 +104,6 @@ class EditStudent extends React.Component {
     }
 
 }
-// export default EditStudent
 
 const mapStateToProps = (state, ownProps) => {
     let currStudID
