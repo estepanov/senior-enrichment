@@ -1,6 +1,8 @@
 'use strict'
 import axios from 'axios'
 // import socket from '../socket'
+// need to import fetch students so we can re get all the students when deleting a campus
+import { fetchStudents } from './students.jsx'
 
 // INITIAL STATE
 const initialState = {
@@ -82,6 +84,7 @@ export const deleteCampus = (id) => {
             .then(() => {
                 // ignore returned campus.... lets just fetch all of them
                 dispatch(fetchCampuses())
+                dispatch(fetchStudents())
             })
             .catch(error => {
                 console.error(error)

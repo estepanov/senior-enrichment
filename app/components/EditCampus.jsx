@@ -60,23 +60,27 @@ class EditCampus extends React.Component {
         if(this.props.currentCampus) {
             return (
                 <form onSubmit={this.handleSubmit}>
-                <fieldset>
-                    <label>Campus Name</label>
-                    <input value={this.state.name} onChange={this.handleChange} type="text" name="name"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Address</label>
-                    <input value={this.state.address} onChange={this.handleChange} type="text" name="address"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Image</label>
-                    <input value={this.state.image} onChange={this.handleChange} type="text" name="image"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Manager Email</label>
-                    <input value={this.state.managerEmail} onChange={this.handleChange} type="text" name="managerEmail"/>
-                </fieldset>
-                <button type="submit">Save Campus Edit</button>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Campus Name</label>
+                        <input value={this.state.name} onChange={this.handleChange} type="text" name="name"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Campus Address</label>
+                        <input value={this.state.address} onChange={this.handleChange} type="text" name="address"/>
+                    </fieldset>
+                </div>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Campus Image</label>
+                        <input value={this.state.image} onChange={this.handleChange} type="text" name="image"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Campus Manager Email</label>
+                        <input value={this.state.managerEmail} onChange={this.handleChange} type="text" name="managerEmail"/>
+                    </fieldset>
+                </div>
+                <button className="submitButton" type="submit">Save Campus Edit</button>
             </form>
             )
         } else  {

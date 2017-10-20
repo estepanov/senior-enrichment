@@ -16,25 +16,34 @@ import SingleStudent from './SingleStudent.jsx'
 import EditCampus from './EditCampus.jsx'
 
 class Root extends Component {
+  constructor(props) {
+    super(props)
+  }
+
   componentDidMount() {
     this.props.goFetchCampuses()
     this.props.goFetchStudents()
   }
 
   render() { 
-    if(this.props.campuses && this.props.students) {
-      
-    }
     return (
       <div className="Main">
+        <div className="StarsBackground"></div>
+        <div className="InstallationBackground"></div>
+        <div className="animate-area"></div>
         <Header campuses={this.props.campuses} students={this.props.students}/>
-        <Switch>  
-          <Route exact path="/campus" component={CampusList} />
-          <Route path="/campus/:campusId" component={SingleCampus} />
-          <Route exact path="/student" component={StudentList} />
-          <Route path="/student/:studentId" component={({ match }) => (<SingleStudent studentId={match.params.studentId} students={this.props.students} />)} />
-          <Route exact path="/" component={Welcome} />
-        </Switch>
+        <div className="content">
+          <Switch>  
+            <Route exact path="/campus" component={CampusList} />
+            <Route path="/campus/:campusId" component={SingleCampus} />
+            <Route exact path="/student" component={StudentList} />
+            <Route path="/student/:studentId" 
+              component={({ match }) => (
+                <SingleStudent studentId={match.params.studentId} students={this.props.students} />
+              )} />
+            <Route exact path="/" component={Welcome} />
+          </Switch>
+        </div>
         <Footer />
       </div>
     )

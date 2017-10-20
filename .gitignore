@@ -15,3 +15,7 @@ yarn-error.log
 # ignore project detail folders
 wireframes
 rubric
+
+
+# ignore psds 
+*.psd

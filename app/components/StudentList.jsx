@@ -27,18 +27,19 @@ class StudentList extends React.Component {
         let mappedStudents
         if (allStudents.length) {
             mappedStudents = allStudents.map((student) => {
-                return <li key={student.id}><Link to={`/student/${student.id}`}>{student.name}</Link> - <button onClick={() => this.props.goDeleteStudent(student.id)}>DELETE</button></li>
+                return <li key={student.id}><Link to={`/student/${student.id}`}>{student.name}</Link> - <button className="deleteButton" onClick={() => this.props.goDeleteStudent(student.id)}><i className="fa fa-trash" aria-hidden="true"></i> DELETE</button></li>
             })
         }
         return mappedStudents
     }
 
     render () { 
-        const mappedStudents = mapStudents(this.props.students)
+        const mappedStudents = this.mapStudents(this.props.students)
         return (
             <div>
-                <button onClick={this.toggleAddStudent}>{ this.state.showAddUser ? 'Hide Form' : 'Add A New Student' }</button>
+                <div className="sameLine"><h2>All Students</h2> <button className="addBox" onClick={this.toggleAddStudent}>{ this.state.showAddUser ? <span><i className="fa fa-eye-slash" aria-hidden="true"></i> Hide Add Form</span> : <span><i className="fa fa-user-circle-o" aria-hidden="true"></i> Add A New Student</span> }</button> </div>
                 { this.state.showAddUser && <NewStudent />}
+                <hr />
                 <ul>
                     { mappedStudents ? mappedStudents : 'We currently do not have any students' }
                 </ul>

@@ -46,29 +46,33 @@ class newStudent extends React.Component {
         }
         return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <fieldset>
-                    <label>Student Name</label>
-                    <input value={this.state.name} type="text" name="name"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Address</label>
-                    <input value={this.state.address} type="text" name="address"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Image</label>
-                    <input value={this.state.image} type="text" name="image"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Email</label>
-                    <input value={this.state.email} type="text" name="email"/>
-                </fieldset>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Student Name</label>
+                        <input value={this.state.name} type="text" name="name"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Student Address</label>
+                        <input value={this.state.address} type="text" name="address"/>
+                    </fieldset>
+                </div>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Student Image</label>
+                        <input value={this.state.image} type="text" name="image"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Student Email</label>
+                        <input value={this.state.email} type="text" name="email"/>
+                    </fieldset>
+                </div>
                 <fieldset>
                     <label>Student Campus</label>
                     <select name="CampusId" defaultValue={this.state.CampusId} disabled={this.props.specificId? true : false}  >
                         {campusOptions}
                     </select>
                 </fieldset>
-                <button type="submit">Create New Student</button>
+                <button className="submitButton" type="submit">Create New Student</button>
             </form>
         )
     }

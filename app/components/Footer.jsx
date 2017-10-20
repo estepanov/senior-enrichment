@@ -4,12 +4,12 @@ import { connect } from 'react-redux'
 function Footer () {
 
   return (
-    <section>
-      <hr />
-      <p>- Copyright 2420</p>
+    <section className="fixedfooter">
+      <div className="footElem">
+        <p>Copyright 2420</p>
+      </div>
     </section>
   )
 }
-
 
 export default Footer

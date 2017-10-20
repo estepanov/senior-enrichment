@@ -15,6 +15,7 @@ class SingleStudent extends React.Component {
         }
         this.handleEditClick = this.handleEditClick.bind(this)
         this.updated = this.updated.bind(this)
+        this.findCampus = this.findCampus.bind(this)
     }
 
     updated() {
@@ -30,16 +31,35 @@ class SingleStudent extends React.Component {
         this.setState({showEditDetails: !this.state.showEditDetails})
     }
 
+    findCampus(allCampuses,campusId) {
+        let currCampus 
+        if(allCampuses.length) {
+            currCampus = allCampuses.find(campus => {
+                console.log("campusid",campus.id)
+                return campus.id === campusId
+            })
+        }
+        return currCampus
+    }
+
     render () {
         const currStudent = this.props.currentStudent
+        
         if(currStudent) {
+            console.log(">>>>",currStudent.CampusId)
+            const currCampus = this.findCampus(this.props.campuses, currStudent.CampusId)
+            console.log("CURRREEEENtt:::::",currCampus)
             return (
                 <div>
-                    <h2>{currStudent.name} <button onClick={this.handleEditClick}>{ this.state.showEditDetails ? 'Hide Edit' : 'Edit Student' }</button></h2>
-                    { this.state.showEditDetails && <EditStudent update={this.updated} />}
-                    <ul>
-                       {currStudent.address}
-                    </ul>
+                    <h2>Student Profile</h2>
+                    <hr />
+                    <div className="sameLine"><h3>{currStudent.name}</h3><button className="toggleBox" onClick={this.handleEditClick}>{ this.state.showEditDetails ? 'Hide Edit' : 'Edit Student' }</button></div>
+                        { this.state.showEditDetails && <EditStudent update={this.updated} />}
+                        
+                        {currStudent.address}<br />
+                        {currStudent.email}<br />
+                        Enrolled in: {currCampus.name}
+
                 </div>
                 )
         } else {

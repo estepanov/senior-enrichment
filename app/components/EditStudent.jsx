@@ -73,29 +73,33 @@ class EditStudent extends React.Component {
         if(this.props.currentStudent) {
             return (
                 <form onSubmit={this.handleSubmit}>
-                <fieldset>
-                    <label>Student Name</label>
-                    <input value={this.state.name} onChange={this.handleChange} type="text" name="name"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Address</label>
-                    <input value={this.state.address} onChange={this.handleChange} type="text" name="address"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Image</label>
-                    <input value={this.state.image} onChange={this.handleChange} type="text" name="image"/>
-                </fieldset>
-                <fieldset>
-                    <label>Student Manager Email</label>
-                    <input value={this.state.email} onChange={this.handleChange} type="text" name="email"/>
-                </fieldset>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Student Name</label>
+                        <input value={this.state.name} onChange={this.handleChange} type="text" name="name"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Student Address</label>
+                        <input value={this.state.address} onChange={this.handleChange} type="text" name="address"/>
+                    </fieldset>
+                </div>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Student Image</label>
+                        <input value={this.state.image} onChange={this.handleChange} type="text" name="image"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Student Manager Email</label>
+                        <input value={this.state.email} onChange={this.handleChange} type="text" name="email"/>
+                    </fieldset>
+                </div>
                 <fieldset>
                 <label>Student Campus</label>
                     <select name="CampusId" value={this.state.CampusId} onChange={this.handleChange} >
                         {campusOptions}
                     </select>
                 </fieldset>
-                <button type="submit">Save Student Edit</button>
+                <button className="submitButton" type="submit">Save Student Edit</button>
             </form>
             )
         } else  {

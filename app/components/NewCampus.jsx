@@ -41,23 +41,27 @@ class NewCampus extends React.Component {
     render () {
         return (
             <form onChange={this.handleChange} onSubmit={this.handleSubmit}>
-                <fieldset>
-                    <label>Campus Name</label>
-                    <input value={this.state.name} type="text" name="name"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Address</label>
-                    <input value={this.state.address} type="text" name="address"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Image</label>
-                    <input value={this.state.image} type="text" name="image"/>
-                </fieldset>
-                <fieldset>
-                    <label>Campus Manager Email</label>
-                    <input value={this.state.managerEmail} type="text" name="managerEmail"/>
-                </fieldset>
-                <button type="submit">Create New Campus</button>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Campus Name</label>
+                        <input value={this.state.name} type="text" name="name"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Campus Address</label>
+                        <input value={this.state.address} type="text" name="address"/>
+                    </fieldset>
+                </div>
+                <div className="sameLine">
+                    <fieldset>
+                        <label>Campus Image</label>
+                        <input value={this.state.image} type="text" name="image"/>
+                    </fieldset>
+                    <fieldset>
+                        <label>Campus Manager Email</label>
+                        <input value={this.state.managerEmail} type="text" name="managerEmail"/>
+                    </fieldset>
+                </div>
+                <button className="submitButton" type="submit">Create New Campus</button>
             </form>
         )
     }
